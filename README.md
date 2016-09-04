@@ -4,7 +4,7 @@ Curso de React.Js do Code School com o objetivo de aprender as features com resp
 
 Exercícios realizados durante o curso com os códigos de cada nível. :)
 
-##### 1) First Component [Level 1]()
+##### 1) First Component - [Level 1]()
 ##### 2) Talk Through Props
 ##### 3) Component State
 ##### 4) Synthetic Events
