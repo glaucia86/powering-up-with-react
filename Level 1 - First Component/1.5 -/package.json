@@ -1,0 +1,19 @@
+{
+  "name": "powering-up-with-react",
+  "version": "1.0.0",
+  "description": "Simples aplicação para estudar React.Js",
+  "main": "index.html",
+  "repository": "https://github.com/glaucia86/powering-up-with-react.git",
+  "scripts": {
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+  },
+  "author": "Glaucia Lemos",
+  "license": "ISC",
+  "devDependencies": {
+   "webpack": "*",
+    "webpack-dev-server": "*"
+  },
+  "dependencies": {
+    "redux": "*"
+  }
+}
