@@ -1,26 +1,22 @@
-/* Criação do Primeiro Componente */
-class RobotBox extends React.Component {
+/* Criação do Componente */
+class Comments extends React.Component {
     render() {
-        const pi = Math.PI;
-        const topics = ["React", "JSX", "JavaScript", "Programação"];
         return (
-            <div>
-                <h3>Me chamo McCircuit</h3>
-                <p>Estou aqui para te ajudar!!</p>
-                    <div className='is-tasty-pie'>
-                        O valor aproximado de PI é: {pi}
-                    </div>
-                    <h3>Tópicos que estou interessado</h3>
-                    /* Aqui estou listando de maneira dinâmica, ao usar o método map() */
-                    <ul>
-                        { topics.map( top => <li>{top}</li>) }
-                    </ul>
+            <div className="comment">
+                <p className="comment-header">
+                    {this.props.author}
+                </p>
+                <p className="comment-body">
+                    {this.props.body}
+                </p>
+                <div className="comment-actions">
+                    <a href="#">Excluir Comentário</a>
+                </div>
             </div>
         );
     }
 }
 
-/* Aqui iremos renderizar o nosso component para a página HTML - Virtual DOM */
-let target = document.getElementById('robot-app');
+let target = document.getElementById('comment-app');
 
-ReactDOM.render( <RobotBox />, target);
+ReactDOM.render( <Comments/>, target);
