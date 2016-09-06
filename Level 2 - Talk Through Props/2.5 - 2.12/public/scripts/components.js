@@ -29,8 +29,8 @@ class CommentBox extends React.Component {
     /* Método para poder retornar o array dos elementos do JSX */
     _getComments() {
         const commentList = [
-            { id:1, author: 'Jake Luc', body: 'Simplesmente não curto!', avatarUrl:'images/default-avatar.png' },
-            { id:2, author: 'Rod Droid', body:'Eu gostaria de saber o que é amor....', avatarUrl:'images/default-avatar.png' }
+            { id:1, author: 'Jake Luck', body: 'Simplesmente não curto!', avatarUrl:'images/avatar-default.png' },
+            { id:2, author: 'Rob Droid', body:'Eu gostaria de saber o que é amor....', avatarUrl:'images/avatar-default.png' }
         ];
 
         return commentList.map((comment) => {
