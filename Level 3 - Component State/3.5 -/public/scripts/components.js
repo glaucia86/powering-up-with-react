@@ -69,17 +69,42 @@ class Comment extends React.Component {
     }
 
     render() {
+
+        let commentBody;
+
+        /* Aqui tratará a lógica para analisar se um determinado post
+            é abusivo ou não. */
+        if(!this.state.isAbusive) {
+            commentBody = this.props.body
+        } else {
+            commentBody = <em>Post marcado como abusivo!</em>
+        }
+
         return (
             <div className="comment">
                 <img src={ this.props.avatarUrl } alt={`${this.props.author} fotos`} />
-                <p className="comment-header">{this.props.author}</p>
-                <p className="comment-body">{this.props.body}</p>
-                <div className="comment=actions">
-                    <a href="#">Excluir Comentário</a>
+                <p className="comment-header">
+                    {this.props.author}
+                </p>
+                <p className="comment-body">
+                    {commentBody}
+                </p>
+                <div className="comment-actions">
+                    <a href="#">Excluir Comentário</a> 
                     <a href='#'>Reportar Comentário Abusivo</a>
+                    <a href='#' onClick={this._toggleAbuse.bind(this)}>Reportar como Abusivo</a>
                 </div>
             </div>
         );
+    }
+
+    /* Método responsável por remover o post abusivo (através do click) */
+    _toggleAbuse(event) {
+        event.preventDefault();
+
+        this.setState({
+            isAbusive: !this.state.isAbusive
+        });
     }
 }
 
