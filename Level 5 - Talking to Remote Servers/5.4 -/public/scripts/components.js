@@ -127,7 +127,7 @@ class CommentBox extends React.Component {
         } else if(commentCount === 1) {
             return '1 comentário';
         } else {
-            return `${commentCount} comments`;
+            return `${commentCount} comentários`;
         }
     }
 
@@ -150,7 +150,7 @@ class CommentBox extends React.Component {
     _fetchComments() {
         $.ajax({
         method: 'GET',
-        url: 'comments.json',
+        url: 'scripts/components.json',
         success: (comments) => {
             this.setState({ comments });
             }
@@ -227,7 +227,7 @@ class CommentAvatarList extends React.Component {
         <h4>Autores</h4>
         <ul>
             {avatars.map((avatarUrl, i) => (
-            <li key={i}>img src={avatarUrl} /></li>
+            <li key={i}>img src={avatarUrl}/></li>
           ))}
         </ul>
       </div>
