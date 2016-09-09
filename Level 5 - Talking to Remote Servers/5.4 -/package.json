@@ -1,0 +1,29 @@
+{
+  "name": "comments-app",
+  "version": "1.0.0",
+  "license": "ISC",
+  "description": "Desenvolvimento de uma pequena aplicação em React.Js de comentários.",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "*",
+    "express": "^4.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/glaucia86/powering-up-with-react.git"
+  },
+  "keywords": [
+    "react",
+    "comment",
+    "example"
+  ],
+  "author": "Glaucia Lemos",
+  "bugs": {
+    "url": ""
+  }
+}

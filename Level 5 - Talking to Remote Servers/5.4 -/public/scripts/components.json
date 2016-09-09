@@ -1,0 +1,20 @@
+[
+    { 
+        "id":1, 
+        "author": "Jake Luck", 
+        "body": "Simplesmente não curto!", 
+        "avatarUrl": "images/avatar-default.png" 
+    },
+    { 
+        "id":2, 
+        "author": "Rob Droid", 
+        "body":"Eu gostaria de saber o que é amor....", 
+        "avatarUrl":"images/avatar-benderson.png"
+    },
+    { 
+        "id":3, 
+        "author": "Paul Circuito", 
+        "body":"Só quero poder ajudar.... embora eu seja um robô...", 
+        "avatarUrl":"images/avatar-sumo.png"
+    }
+]
