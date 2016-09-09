@@ -26,15 +26,10 @@ class Comment extends React.Component {
         return (
             <div className="comment">
                 <img src={ this.props.avatarUrl } alt={`${this.props.author} fotos`} />
-                <p className="comment-header">
-                    {this.props.author}
-                </p>
-                <p className="comment-body">
-                    {commentBody}
-                </p>
+                <p className="comment-header">{this.props.author}</p>
+                <p className="comment-body">{commentBody}</p>
                 <div className="comment-actions">
-                    <a href="#">Excluir Comentário</a> 
-
+                    <RemoveCommentConfirmation onDelete={this._handleDelete.bind(this)} />
                     <a href='#' onClick={this._toggleAbuse.bind(this)}>Reportar como Abusivo</a>
                 </div>
             </div>
@@ -52,14 +47,10 @@ class Comment extends React.Component {
 
     /* Método responsável por apresentar um 'event' do Js que permitirá interagir com o usuário
         caso ele tem certeza se deseja deletar o comentário */
-    handleDelete(event) {
-        event.preventDefault();
-
-        if(confirm('Você tem certeza que desejar deletar o post?')) {
-            this.props.onDelete(this.props.id);
+    _handleDelete(event) {
+        this.props.onDelete(this.props.id);
         }
     }
-}
 
 /* Componente - Caixa de Comentários */
 class CommentBox extends React.Component {
@@ -82,9 +73,9 @@ class CommentBox extends React.Component {
         return(
             <div className="comment-box">
                 <CommentForm addComment={this._addComment.bind(this)} />
-                <CommentAvatarList avatars={ this._getAvatars() } />
+                <CommentAvatarList avatars={this._getAvatars()} />
                 { this._getPopularMessage(comments.length) }
-                <h3 className="comment-count">{ this._getCommentsTitle(comments.length) }</h3>
+                <h3 className="comment-count">{this._getCommentsTitle(comments.length)}</h3>
                 <div className="comment-list">
                     {comments}
                 </div>
@@ -116,6 +107,7 @@ class CommentBox extends React.Component {
                     author      = { comment.author }
                     body        = { comment.body }
                     avatarUrl   = { comment.avatarUrl } 
+                    onDelete    = { this._deleteComment.bind(this) }
                     key         = { comment.id } />);
         });
     }
@@ -222,17 +214,60 @@ class CommentForm extends React.Component {
 class CommentAvatarList extends React.Component {
     render() {
         const { avatars = [] } = this.props;
+
     return (
         <div className="comment-avatars">
         <h4>Autores</h4>
         <ul>
             {avatars.map((avatarUrl, i) => (
-            <li key={i}>img src={avatarUrl}/></li>
+            <li key={i}><img src={avatarUrl}/></li>
           ))}
         </ul>
       </div>
     );
   }
+}
+
+/* Componente responsável pela confirmação da exclusão do post já enviado!! */
+class RemoveCommentConfirmation extends React.Component {
+    constructor() {
+    super();
+
+        this.state = {
+            showConfirm: false
+            };
+        }
+
+    render() {
+        let confirmNode;
+
+        if(this.state.showConfirm) {
+            return (
+                <span>
+                    <a href="" onClick={this._confirmDelete.bind(this)}>Sim </a> - ou - <a href="" onClick={this._toggleConfirmMessage.bind(this)}> Não</a>
+                </span>
+            );
+        } else {
+            confirmNode = <a href="" onClick={this._toggleConfirmMessage.bind(this)}>Deseja Excluir Comentário?</a>;
+        }
+            return (
+                <span>{confirmNode}</span>
+            );
+        }
+
+        _toggleConfirmMessage(e) {
+            e.preventDefault();
+
+            this.setState({
+                showConfirm: !this.state.showConfirm
+            });
+        }
+
+        _confirmDelete(e) {
+            e.preventDefault();
+
+            this.props.onDelete(this.props.id);
+        }
 }
 
 let target = document.getElementById('comment-app');
